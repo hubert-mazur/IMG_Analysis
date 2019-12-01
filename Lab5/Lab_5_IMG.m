@@ -103,3 +103,6 @@ prop = regionprops(l==8, 'all');
 imshow(prop.Image); 
 % kawałek skrzydła sprawia, że kaczka jest nietypowa
 
+
+
+
