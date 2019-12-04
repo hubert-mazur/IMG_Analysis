@@ -10,6 +10,7 @@ i = 1;
 im = imread('ptaki.jpg');
 im = double(im) / 255;
 g_im = rgb2gray(im);
+imwrite(g_im, 'odcienie_szarosci_zwykle.jpg');
 
 
 for i=1:3 
@@ -18,6 +19,28 @@ for i=1:3
     subplot(3,2,2*i);
     imhist(im(:,:,i));
 end;
+
+imwrite(im(:,:,1), 'obrazek_red.jpg');
+imwrite(im(:,:,2), 'obrazek_green.jpg');
+imwrite(im(:,:,3), 'obrazek_blue.jpg');
+
+
+
+
+
+
+
+figure;
+imhist(im(:,:,1));
+saveas(gcf,sprintf('histogram_obrazek_red.png',i));
+figure;
+imhist(im(:,:,2));
+saveas(gcf,sprintf('histogram_obrazek_green.png',i));
+figure;
+imhist(im(:,:,3));
+saveas(gcf,sprintf('histogram_obrazek_blue.png',i));
+
+
 
 b = im(:,:,3);
 r = im(:,:,1);
@@ -33,6 +56,7 @@ b_im = imopen(b_im, ones(5));
 
 % figure;
 % imshow(b_im);
+imwrite(b_im, 'zbianryzowany_obraz.jpg');
 
 %  obraz zbinaryzowany został, patrząc na różne kanały- red i blue, nie za pomocą funkcji rgb2gray
 %% <title> Współczynniki geometryczne: </title>
@@ -100,7 +124,7 @@ err = err < T;
 typ = sum(err, 2) > 3;
 
 prop = regionprops(l==8, 'all');
-imshow(prop.Image); 
+% imshow(prop.Image); 
 % kawałek skrzydła sprawia, że kaczka jest nietypowa
 
 
